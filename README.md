@@ -10,6 +10,7 @@ Fork it, and don't d( _f_ )uck it up.
 
 TODO:
 > Decide on the techstack.
+
 > come up with an overall style we are aiming for.
 
 
