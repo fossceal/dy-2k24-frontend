@@ -1,0 +1,278 @@
+body{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    /* cursor: none; */
+}
+
+
+
+.masterDialog{
+    width: 40vw;
+    background-color: #a4a4a4b3;
+    height: 60vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 12px;
+    z-index: 1200;
+    display: none;
+    opacity: 0;
+    transition: 200ms;
+    flex-direction: column;
+    justify-content: stretch;
+    border: 2px solid rgb(170, 170, 170);
+    box-shadow: 3px 3px 12px 3px #00000026;
+    backdrop-filter: blur(27px);
+    align-items: center;
+}
+.masterDialog>p{
+    width: 90%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: rgb(55, 55, 55);
+    text-align: center;
+
+}
+
+.masterDialog>div{
+    position: absolute;
+    bottom: 12px;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    height: 10%;
+}
+
+.masterDialog>div>button{
+    width: 40%;
+    height: 100%;
+    border: none;
+    border-radius:24px;
+    cursor: pointer;
+    color: white;
+    transition: 200ms;
+    font-size: 1.2em;
+}
+.masterDialog>div>#okayButton{
+    background-color: #0777ff98;
+}
+.masterDialog>div>#okayButton:hover{
+    background-color:#08b1ffe3 ;
+    box-shadow: 0px 0px 12px 3px #00ff2f26;
+}
+.masterDialog>div>#cancelButton{
+    background-color: #82000000;
+    border:4px solid rgb(0, 27, 63);
+    color:rgb(255, 255, 255);
+}
+.masterDialog>div>#cancelButton:hover{
+    border: 4px solid rgb(255, 7, 7);
+    color:rgb(255, 7, 7);
+    box-shadow: 0px 0px 12px 3px #ff00002b;
+
+}
+
+.masterDialog>div>button:hover{
+    transform: scale(1.1);
+}
+
+/* https://images.unsplash.com/photo-1614090699960-b4c81be49f3c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D   def*/
+
+/* https://images.unsplash.com/photo-1546778316-dfda79f1c84e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D   daks*/
+
+/* https://images.unsplash.com/photo-1616922446637-01425d719b4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D  yan*/
+.HeroDiv{
+    background: linear-gradient(180deg,transparent 20%,black),url('https://images.unsplash.com/photo-1614090699960-b4c81be49f3c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 400ms;
+    animation: fadeIn 2s forwards ease-in-out;
+
+}
+.fullwidthDiv{
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 400ms;
+}
+.logo{
+    width: 90vh;
+    height: 90vh;
+    top:50%;
+    transform: translateY(-50%);
+    /* background-color: antiquewhite; */
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 600ms;
+    position: fixed;
+
+}
+#marko{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+/* https://images.unsplash.com/photo-1616922446637-01425d719b4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D */
+
+#ybg{
+    width: 0%;
+    height: 100%;
+    background:url('assets/ybg.png');
+    background-size: cover;
+    background-position: center;
+    transition: 200ms;
+    overflow: hidden;
+}
+#ybg>video{
+    width: 100vw;
+    height: auto;
+}
+
+/* https://images.unsplash.com/photo-1546778316-dfda79f1c84e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D */
+#dbg{
+    width: 0%;
+    height: 100%;
+    background:url('assets/dbg.png');
+    background-size: cover;
+    background-position: center;
+    transition: 200ms;
+    overflow: hidden;
+}
+#dbg>video{
+    width: 100vw;
+    height: auto;
+
+}
+.DY{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+}
+.D24{
+    position: absolute;
+    width: 80%;
+    height: auto;
+    z-index: 4;
+}
+#d{
+    width: 100%;
+    height:25%;
+    position: absolute;
+    z-index: 12;
+    top:50%;
+    opacity: 1;
+    transform: translateY(-105%);
+    background: rgba(37, 37, 37, 0);
+    transition: 400ms;
+    backdrop-filter: invert(0);
+}
+#d:hover{
+    backdrop-filter: invert(1);
+}
+#y:hover{
+    backdrop-filter: invert(1);
+} 
+#y{
+    width: 100%;
+    height:27%;
+    position: absolute;
+    z-index: 12;
+
+    bottom:50%;
+    transform: translateY(96%);
+    background: rgba(45, 45, 45, 0);
+    transition: 400ms;
+    opacity: 1;
+}
+.logoToHeader{
+    position: fixed;
+    top:8%;
+    height: 18vh;
+    width: 18vh;
+}
+.DD{
+    animation: pulse2 1s forwards ease-out;
+}
+canvas{ 
+    display: block; 
+    vertical-align: bottom;
+  }
+  
+  /* ---- particles.js container ---- */ 
+  #particles-js{ 
+    position:absolute; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1;
+  } 
+@keyframes pulse {
+    0%{
+        transform: translateY(-50%) scale(1);
+        opacity: .3;
+    }
+    50%{
+        transform: translateY(-50%) scale(.8);
+        /* opacity: .2; */
+    }90%{
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+    }
+}
+@keyframes pulse2{
+    0%{
+        transform: scale(1);
+        
+    }
+    50%{
+        transform: scale(.7);
+        /* opacity: .2; */
+    }90%{
+        transform: scale(1);
+        
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes cursorPulse {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(.6);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
