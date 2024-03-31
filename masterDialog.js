@@ -9,8 +9,13 @@ class DialogMaster{
         this.dialog = document.getElementById(id);
     }
 
-    setDialog(message,okCallBack,cancelCallBack,hideAfterOk = true,hideAfterCancel = true){
+    setDialog(message,okCallBack,cancelCallBack,showCancel = true,hideAfterOk = true,hideAfterCancel = true){
         this.dialog.children[0].innerHTML = message;
+        if(showCancel){
+            this.dialog.children[1].children[0].style.display = 'block';
+        }else{
+            this.dialog.children[1].children[0].style.display = 'none';
+        }
         this.dialog.children[1].children[1].addEventListener('click',okCallBack);
         this.dialog.children[1].children[0].addEventListener('click',cancelCallBack);
         if(hideAfterOk){
