@@ -14,53 +14,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+elem("promptSignin").addEventListener('click',()=>{signInWithRedirect(auth,provider)});
 
 
-getRedirectResult(auth).then((result) => {
-    var token
-    if (result.credential) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-         token = credential.accessToken;
-    }else{
-        token = result.user.accessToken ;
+onAuthStateChanged(auth,(user) => {
+    if (user !== null) {
+        location.href = "/";
+
     }
-
-    runAxios(formatRequest(formatData(result.user.uid,token),'/loginUser')).then((response)=>{
-        console.log(response);
-    });
-
-    const user = result.user;
-    console.log('User signed in');
-    console.log(user);
-
-}).catch((error) => {
-        console.warn(error)
-            var signinDialog = new DialogMaster('signinDialog');
-    signinDialog.setDialog('Please sign in to continue',()=>{signInWithRedirect(auth,provider)},()=>{},false);
-    signinDialog.show();
+    else{
     }
-    );
-
-// onAuthStateChanged(auth, (user) => {
-
-// if(user){
-//     console.log('User already signed in');
-//     console.log(user);
-
-//     runAxios(formatRequest(formatData(user.uid,user.accessToken),'/me')).then((response)=>{
-//         console.log(response);
-//     });
-
-//     var signinDialog = new DialogMaster('signinDialog');
-//     signinDialog.setDialog('You are already signed in as '+ user.displayName,()=>{},()=>{},false);
-//     signinDialog.show();
-
-// }else{
-//     var signinDialog = new DialogMaster('signinDialog');
-//     signinDialog.setDialog('Please sign in to continue',()=>{signInWithRedirect(auth,provider)},()=>{},false);
-//     signinDialog.show();
-
-
-// }
-// });
+})

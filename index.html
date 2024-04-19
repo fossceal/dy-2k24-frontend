@@ -3,45 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daksha Yantra 2024</title>
-    <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> -->
+    <title>DY24</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="icon" href="assets/24.webp">
+    <link rel="stylesheet" href="assets/fonts/fontFace.css">
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <!-- We DO NOT condone Racism -->
-    <div class="masterDialog" id="masterDialog">
-        <p id="dialogContent"></p>
-        <div>
-            <button id="cancelButton">NOPE</button>
-            <button id="okayButton">OK</button>
-        </div>
+
+    <div id="skipbt">
+        Skip
+        <span class="material-symbols-outlined">
+            navigate_next
+            </span>
     </div>
 
-    <div class="HeroDiv">
-        <div id="dbg">
-            <video id="dakshaVid"src="assets/dakshaNew.mp4" autoplay muted loop></video>
-        </div>
-        <div id="ybg">
-            <video id="yanthraVid" src="assets/yanthraNew.mp4" autoplay muted loop></video>
-        </div>
 
-        <div id="logo" class="logo">
-            <div id="d"></div>
-            <div id="y"></div>
-            <img class="D24" src="assets/24.png">
-            <img class="DY" src="assets/dy again.png">
-        </div>
-
-        <div id="particles-js">
-
+    <div class="fw fh sc c" id="rw" style="transition: 400ms;"> 
+        <div id="Boogie">
+            <h3 id="miggity">press space to start</h3>
+            <span id="cursor"></span>
         </div>
     </div>
-    <div class="fullwidthDiv">
-        
+    <div class="fw fh sc c col" id="rw2" style="transition: 400ms;opacity: 0;display: none;"> 
+        <img src="assets/gemini.svg" id="gemini">
+        <div id="sliderContainer">
+            <div id="sliderMatte"></div>
+        </div>
+</div>
+
+<video src="assets/anim.webm"  muted class="fw" id="bgVid" style="height: auto;"></video>
+    <img src="assets/titleCard.png"  class="sc" id="title" style="display: none;">  
+
+<div class="fw fh sc" id="hBG" style="opacity: 0;">
+    <div id="promptSignin" class="sc" style="transform: translate(-50%,200%);">
+        Sign In
     </div>
-    <script src="lib.js"></script>
-    <script src="masterDialog.js"></script>
-    <script src="app.js"></script>
-    
+<div class="abs top right row c" style="gap: 12px;padding: 12px;"> 
+
+<div id="cart" class="topShelfIcons">
+    <span class="material-symbols-outlined">
+       shopping_cart
+        </span>
+</div>
+<div id="user" class="topShelfIcons noti">
+    <span class="material-symbols-outlined">
+        account_circle
+        </span>
+</div>
+
+</div>
+</div>
+
+
+
+
+<script src="lib.js"></script>
+<script src="app.js"></script>
+<script  type="module"src="master.js"></script>
 </body>
 </html>
