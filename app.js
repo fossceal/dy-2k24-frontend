@@ -1,5 +1,8 @@
 vid = document.getElementById("bgVid");
-
+// scroll to top on window load
+window.addEventListener('load', function() {
+    window.scrollTo(0, 0);
+});
 async function playVid() {
 
     await sleep(1000);
@@ -21,6 +24,8 @@ async function skip(){
     elem('bgVid').style.display = "none";
     elem('skipbt').style.display = "none";
     elem("hBG").style.opacity = 1;
+    document.body.style.overflow = "scroll"
+
 }
 
 elem('skipbt').addEventListener('click', async function () {
@@ -50,6 +55,8 @@ async function bis(){
             await sleep(300);
             elem("sliderMatte").style.width = "100%"
             elem("rw2").style.opacity = 0;
+            elem('bgVid').style.opacity = 1;
+            elem('bgVid').style.display = "block";
             await this.setTimeout(() => {
                 elem('rw2').style.display = "none";
             },400)
@@ -76,12 +83,13 @@ async function bis(){
             elem("Boogie").style.opacity=0;
             await sleep(200);
             elem("Boogie").style.display="none";
+            document.body.style.overflow = "scroll"
             
 }
 
 async function jizz(){
     if(_isAnimRunning){}else{
-
+        _isAnimRunning = true;
         bis();
     }
 }
@@ -145,5 +153,5 @@ async function typeIn(text) {
     }
 }
 
-attingal_cea_1
+
 var _isAnimRunning = false;

@@ -8,6 +8,7 @@ body {
     color: white;
     font-weight: 700;
     overflow: hidden;
+
 }
 
 .fw {
@@ -393,6 +394,9 @@ body {
     font-size: 20px;
 }
 
+.sect{
+    width: 100vw;height: 100vh;
+}
 .Deets>input {
     width: 80%;
     padding: 12px;
@@ -425,6 +429,59 @@ body {
     background: none;
 }
 
+.gallery {
+    position: fixed;
+    width: 30vw;
+    height: 20vh;
+    opacity: 0%;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff8f;
+    color: grey;
+    border-radius: 10px;
+    display: none;
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: 400ms;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .galleryTitle {
+    position: absolute;
+    left: 24px;
+    font-size: 22px;
+    width: 100vh;
+    height: 4vh;
+    /* overflow: scroll; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #gallerya {
+    margin: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    width: 80%;
+  }
+  
+  
+  #gayYY{
+    height:480vh;width: 100vw;
+  }
+
+  #gallerya > img {
+    transition: 200ms;
+  }
+  
+  #gallerya > img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 .btn:hover {
     background: rgb(255, 0, 0);
     color: #ffffff;
@@ -466,5 +523,12 @@ body {
         border-radius: 4px;
         transition: 400ms;
     }
-
+      
+  #gayYY{
+    height: 200vh;
+    width: 100vw;
+  }
+#hBG{
+    background-size: cover;
+}
 }
