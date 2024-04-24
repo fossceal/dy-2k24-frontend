@@ -10,10 +10,14 @@ async function playVid() {
 async function skip(){
     elem('bgVid').style.opacity = 0;
     elem('title').style.display = "flex";
+    elem("Boogie").style.opacity = 0;
     elem('skipbt').style.opacity = 0;
     await sleep(400);
     elem('bgVid').style.opacity = 0;
     await sleep(500);
+    await this.setTimeout(() => {
+        elem('Boogie').style.display = "none";
+    },400)
     elem('bgVid').style.display = "none";
     elem('skipbt').style.display = "none";
     elem("hBG").style.opacity = 1;
@@ -24,13 +28,8 @@ elem('skipbt').addEventListener('click', async function () {
 });
 
 // skip();
-
-window.addEventListener('keydown', async function (e) {
-    if (e.key == " ") {
-        if (_isAnimRunning) {
-            // _isAnimRunning = false;
-        }else{
-           await backspace(0);;
+async function bis(){
+    await backspace(0);
             _isAnimRunning = true;
             await sleep(500);
             await typeIn("> Generate an image of a folklore deity worship inside a cave with dy logo in the centre  just above the idol, grey scale,dark");
@@ -73,38 +72,78 @@ window.addEventListener('keydown', async function (e) {
             await sleep(3500);
             elem("hBG").style.opacity = 1;
             elem('skipbt').style.display = "none";
+
+            elem("Boogie").style.opacity=0;
+            await sleep(200);
+            elem("Boogie").style.display="none";
             
+}
+
+async function jizz(){
+    if(_isAnimRunning){}else{
+
+        bis();
+    }
+}
+
+window.addEventListener('keydown', async function (e) {
+    if (e.key == " ") {
+        if (_isAnimRunning) {
+            // _isAnimRunning = false;
+        }else{
+           bis()
         }
     }
 });
 
 async function backspace(n = 8,f = false) {
     var mig = elem("miggity");
+    var pig = elem("thempiIsgay")
     var jig = mig.innerHTML.split("");
+    var vig = pig.innerHTML.split("");
     len = jig.length - n
-    console.log(jig.length);
+    lens = vig.length - n
+
     for (var i = 0; i < len; i++) {
         // console.log(jig);
         if(f){
             await sleep(3)
             jig.pop();
+            
         }else{
         await sleep(50);
         jig.pop();
+        
         }
         mig.innerHTML = jig.join("");
+
+    }
+    for(var i=0;i<lens;i++){
+        if(f){
+            await sleep(3);
+            vig.pop();
+        }else{
+            await sleep(50);
+            vig.pop();
+        }
+        pig.innerHTML = vig.join("")
 
     }
 }
 
 async function typeIn(text) {
     var mig = elem("miggity");
+    var pig = elem("thempiIsgay");
     var jig = mig.innerHTML.split("");
-
+    var vig = pig.innerHTML.split("");
     for (var i = 0; i < text.length; i++) {
         await sleep(25);
         jig.push(text[i]);
+        vig.push(text[i]);
         mig.innerHTML = jig.join("");
+        pig.innerHTML = vig.join("");
     }
 }
+
+attingal_cea_1
 var _isAnimRunning = false;

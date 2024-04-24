@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DY24</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+        integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="icon" href="assets/24.webp">
     <link rel="stylesheet" href="assets/fonts/fontFace.css">
     <link rel="stylesheet" href="app.css">
 </head>
+
 <body>
 
     <div id="skipbt">
         Skip
         <span class="material-symbols-outlined">
             navigate_next
-            </span>
+        </span>
     </div>
 
 
-    <div class="fw fh sc c" id="rw" style="transition: 400ms;"> 
+    <div class="fw fh sc c" id="rw" style="transition: 400ms;z-index: 5;" onclick="jizz()">
         <div id="Boogie">
             <h3 id="miggity">press space to start</h3>
+            <h3 id="thempiIsgay" onclick="jizz()">
+                click here to start
+            </h3>
             <span id="cursor"></span>
         </div>
     </div>
-    <div class="fw fh sc c col" id="rw2" style="transition: 400ms;opacity: 0;display: none;"> 
+    <div class="fw fh sc c col" id="rw2" style="transition: 400ms;opacity: 0;display: none;z-index: 4;">
         <img src="assets/gemini.svg" id="gemini">
         <div id="sliderContainer">
             <div id="sliderMatte"></div>
         </div>
-</div>
-
-<video src="assets/anim.webm"  muted class="fw" id="bgVid" style="height: auto;"></video>
-    <img src="assets/titleCard.png"  class="sc" id="title" style="display: none;">  
-
-<div class="fw fh sc" id="hBG" style="opacity: 0;">
-    <div id="promptSignin" class="sc" style="transform: translate(-50%,200%);">
-        Sign In
     </div>
-<div class="abs top right row c" style="gap: 12px;padding: 12px;"> 
+    <video src="assets/anim.webm" muted class="fw sc c" id="bgVid" style="height: auto;z-index: 2;"></video>
 
-<div id="cart" class="topShelfIcons">
-    <span class="material-symbols-outlined">
-       shopping_cart
-        </span>
-</div>
-<div id="user" class="topShelfIcons noti">
-    <span class="material-symbols-outlined">
-        account_circle
-        </span>
-</div>
+    <img src="assets/titleCard.png" class="sc" id="title" style="display: none;">
 
-</div>
-</div>
+    <div class="fw fh sc" id="hBG" style="opacity: 0;z-index: 4;" onclick="jizz()">
+
+
+    </div>
 
 
 
 
-<script src="lib.js"></script>
-<script src="app.js"></script>
-<script  type="module"src="master.js"></script>
+    <script src="lib.js"></script>
+    <script src="app.js"></script>
+
 </body>
+
 </html>

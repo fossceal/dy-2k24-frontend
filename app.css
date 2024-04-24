@@ -1,4 +1,4 @@
-body{
+body {
     background-color: black;
     width: 100vw;
     height: 100vh;
@@ -10,34 +10,38 @@ body{
     overflow: hidden;
 }
 
-.fw{
+.fw {
     width: 100vw;
 }
 
-.hw{
+.hw {
     width: 50vw;
 }
-.hh{
+
+.hh {
     height: 50vh;
 }
 
-.fh{
+.fh {
     height: 100vh;
 }
 
-.c{
+.c {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.row{
+
+.row {
     flex-direction: row;
 }
-.col{
+
+.col {
     flex-direction: column;
 
 }
-.sc{
+
+.sc {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -45,7 +49,7 @@ body{
 }
 
 
-#g{
+#g {
     background: url('assets/b.png') no-repeat;
     background-position: center;
     background-size: 100% auto;
@@ -53,46 +57,53 @@ body{
     transition: 600ms;
 }
 
-#g:hover{
+#g:hover {
     opacity: 1;
 }
 
 
-#hBG{
-    background:url(assets/bg.webp);background-position: center ;background-size:100%;background-repeat: no-repeat;
+#hBG {
+    background: url(assets/bg.webp);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
     /* animation: fadIn 1s forwards ; */
     transition: 1000ms;
     /* opacity: 0; */
 }
 
 
-@keyframes fadIn{
-    0%{
+@keyframes fadIn {
+    0% {
         opacity: 0;
     }
-    6%{
+
+    6% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }
 
-#title{
-    width: 50%;height: auto;z-index: 20;
+#title {
+    width: 50%;
+    height: auto;
+    z-index: 20;
     opacity: 0;
-    animation:loadTitle 3s forwards;
+    animation: loadTitle 3s forwards;
 }
 
-@keyframes loadTitle{
-    0%{
+@keyframes loadTitle {
+    0% {
         opacity: 0;
-        transform:translate(-50%,-50%) scale(2);
+        transform: translate(-50%, -50%) scale(2);
     }
- 
-    100%{
+
+    100% {
         opacity: 1;
-        transform:translate(-50%,-50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
     }
 }
 
@@ -125,6 +136,10 @@ body{
 
 }
 
+#thempiIsgay {
+    display: none;
+}
+
 #cursor {
     animation: blink .5s infinite;
     height: 3px;
@@ -154,7 +169,9 @@ body{
     transition: 400ms;
     position: relative;
 
-}    @keyframes blink {
+}
+
+@keyframes blink {
     0% {
         opacity: 0;
     }
@@ -167,6 +184,7 @@ body{
         opacity: 0;
     }
 }
+
 @keyframes appearA {
     0% {
         opacity: 0;
@@ -198,12 +216,13 @@ body{
 
     }
 }
-#gemini{
+
+#gemini {
     opacity: 1;
     height: 60px;
     width: auto;
 
-    animation:rotate 3s linear infinite;
+    animation: rotate 3s linear infinite;
 }
 
 
@@ -217,15 +236,16 @@ body{
     }
 }
 
-#sliderContainer{
+#sliderContainer {
     margin-top: 24px;
     height: 8px;
     border-radius: 4px;
     overflow: hidden;
-    width:600px;
+    width: 600px;
     /* background-color: #a0a0ff; */
 }
-#sliderMatte{
+
+#sliderMatte {
     height: 100%;
     width: 0%;
     background: linear-gradient(90deg, #3c91d9, #9168C0);
@@ -233,8 +253,8 @@ body{
     transition: 400ms;
 }
 
-#skipbt{
-    color:rgba(255, 255, 255, 0.386);
+#skipbt {
+    color: rgba(255, 255, 255, 0.386);
     position: absolute;
     right: 0px;
     z-index: 30;
@@ -245,48 +265,49 @@ body{
     transition: 400ms;
 }
 
-#skipbt:hover{
+#skipbt:hover {
     color: #ff0000;
 }
 
-.abs{
+.abs {
     position: absolute;
 
 }
-.top{
+
+.top {
     top: 0px;
 }
 
-.right{
+.right {
     right: 0px;
 }
 
-.bottom{
+.bottom {
     bottom: 0px;
 }
 
-.left{
+.left {
     left: 0px;
 }
 
-.row{
+.row {
 
     flex-direction: row;
 
 }
 
-.topShelfIcons{
+.topShelfIcons {
     color: rgba(154, 154, 154, 0.504);
     cursor: pointer;
-    
+
     /* outline: 1px solid white; */
 }
 
-.topShelfIcons:hover{
+.topShelfIcons:hover {
     color: white;
 }
 
-.noti::after{
+.noti::after {
     content: "";
     background-color: red;
     position: absolute;
@@ -296,7 +317,7 @@ body{
     height: 5px;
 }
 
-#promptSignin{
+#promptSignin {
     /* position: absolute; */
     /* z-index: 35; */
     text-align: center;
@@ -311,14 +332,16 @@ body{
     border: 2px solid rgba(255, 255, 255, 0.452);
     border-radius: 25px;
 }
-#promptSignin:hover{
+
+#promptSignin:hover {
     background: rgb(255, 0, 0);
     color: #ffffff;
     border: 2px solid #ff0000;
 }
 
-#acc{
-    width: 86vw;height: 90vh;
+#acc {
+    width: 86vw;
+    height: 90vh;
     border-radius: 12px;
     background: rgba(14, 14, 14, 0.452);
     backdrop-filter: blur(12px);
@@ -327,13 +350,16 @@ body{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
 }
-#userProfileArea{
+
+#userProfileArea {
     grid-row: 1;
-    height:90%;
+    height: 90%;
     grid-column: 1/2;
     flex-direction: column;
     border-right: 2px solid rgba(255, 255, 255, 0.452);
-}#userProfilePic{
+}
+
+#userProfilePic {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -346,8 +372,8 @@ body{
     overflow: hidden;
 }
 
-#userProfileDetails{
-    grid-row:1;
+#userProfileDetails {
+    grid-row: 1;
     grid-column: 2/3;
     display: flex;
     height: 90%;
@@ -355,17 +381,19 @@ body{
     flex-direction: column;
     padding-left: 24px;
 }
-.Deets{
+
+.Deets {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
 }
 
-.Deets>h1{
+.Deets>h1 {
     font-size: 20px;
 }
-.Deets>input{
+
+.Deets>input {
     width: 80%;
     padding: 12px;
     /* margin: 12px; */
@@ -375,13 +403,16 @@ body{
     border-radius: 12px;
     outline: none;
 }
-.Deets>input:focus{
+
+.Deets>input:focus {
     border: 1px solid #ff0000;
 }
-.Deets>input:autofill{
+
+.Deets>input:autofill {
     background-color: blue;
 }
-.btn{
+
+.btn {
     font-family: 'SequelBlack';
     text-align: center;
     padding: 12px;
@@ -393,8 +424,47 @@ body{
     border-radius: 25px;
     background: none;
 }
-.btn:hover{
+
+.btn:hover {
     background: rgb(255, 0, 0);
     color: #ffffff;
     border: 2px solid #ff0000;
+}
+
+
+@media screen and (max-width:700px) {
+    #miggity {
+        display: none;
+    }
+
+    #thempiIsgay {
+        font-size: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        margin: 2px;
+        font-family: monospace;
+        color: grey;
+        transition: 400ms;
+
+    }
+    #sliderContainer {
+        margin-top: 24px;
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        width: 200px;
+        /* background-color: #a0a0ff; */
+    }
+    
+    #sliderMatte {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #3c91d9, #9168C0);
+        border-radius: 4px;
+        transition: 400ms;
+    }
+
 }
