@@ -1,8 +1,13 @@
 vid = document.getElementById("bgVid");
 // scroll to top on window load
-window.addEventListener('load', function() {
-    window.scrollTo(0, 0);
-});
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+else {
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
+}
 async function playVid() {
 
     await sleep(1000);
