@@ -39,7 +39,14 @@ justify-content: flex-start;">
         function triggerClose() {
             parent.closeGallery();
         }
-
+        if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+else {
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
+}
         var loc = window.location.href;
         var loc = loc.split('/');
         // console.log(loc[loc.length - 1]);
@@ -159,7 +166,7 @@ justify-content: flex-start;">
         // console.log(pics);
 
         for (let i = 0; i < pics.length; i++) {
-            document.getElementById('gallerya').innerHTML += '<img src="' + pics[i] + '" style="width: 100%;height: auto;" onclick="setTarget(' + i + ')">';
+            document.getElementById('gallerya').innerHTML += '<img src="' + pics[i] + `" style="width: 100%;height: auto;" onclick="MasterGOTO('${links[i].link}')">`;
         }
 
 
@@ -169,7 +176,13 @@ justify-content: flex-start;">
         }
         picsJson = JSON.stringify(messageBlock);
         picsEncrypt = btoa(picsJson);
-
+        function MasterGOTO(uri){
+            var messageBlock = {
+                event: "goto",
+                data: uri
+            }
+            parent.postMessage(btoa(JSON.stringify(messageBlock)), '*');
+        }
 
         localStorage.setItem('msg', picsEncrypt);
         function setTarget(n) {

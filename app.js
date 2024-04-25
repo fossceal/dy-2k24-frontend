@@ -15,6 +15,16 @@ async function playVid() {
         //do next
     });
 }
+window.onmessage = function (e) {
+    vata =window.atob(e.data);
+    vjata = JSON.parse(vata);
+    if(vjata.event == "goto"){
+        window.location.href = vjata.data;
+    }
+
+}
+
+
 async function skip(){
     elem('bgVid').style.opacity = 0;
     elem('title').style.display = "flex";
