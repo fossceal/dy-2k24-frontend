@@ -25,7 +25,7 @@ class animate{
         var pos = b.pos()
         const d = scrnHt - pos.y;
         const v = ((d/scrnHt)*100)
-        if(v>20 && v<100){
+        if(v>5 && v<100){
 if(_libDEBUG){          console.log("beacon in view",b.self.getAttribute('id'),v);}
           if(b.from == "left"){
             elem(b.self.getAttribute('id')).style.transform = "translateX(0)";

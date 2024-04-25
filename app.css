@@ -480,11 +480,25 @@ body {
   }
 
   #gallerya > img {
-    transition: 500ms;
+    transition: 200ms;
   }
   
   #gallerya > img:hover {
     cursor: pointer;
+    scale: 1.1;
+    z-index: 12;;;
+  }
+
+  #VOLTAIRmerch:hover{
+    z-index: 12;
+  }
+#viva{
+    transition: 200ms;
+    cursor: pointer;
+}
+  #viva:hover{
+    z-index: 12;
+
     scale: 1.1;
   }
 .btn:hover {
