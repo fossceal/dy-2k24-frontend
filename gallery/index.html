@@ -40,13 +40,13 @@ justify-content: flex-start;">
             parent.closeGallery();
         }
         if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-}
-else {
-    window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-    }
-}
+            history.scrollRestoration = 'manual';
+        }
+        else {
+            window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
+            }
+        }
         var loc = window.location.href;
         var loc = loc.split('/');
         // console.log(loc[loc.length - 1]);
@@ -69,7 +69,7 @@ else {
                 link: "full stack"
             },
             {
-                link: "generative ai"
+                link: "https://rb.gy/h7mi7x"
             },
             {
                 link: "https://forms.gle/PutVgwpk3ejXcTE76"
@@ -87,7 +87,7 @@ else {
                 link: "https://foss.ceal.club/khack"
             },
             {
-                link: "circuit debugging"
+                link: "https://forms.gle/qLBu5WJ5t9qo5Ur66"
             },
             {
                 link: "https://forms.gle/12vyTqTrnGeQPn1W8"
@@ -176,7 +176,7 @@ else {
         }
         picsJson = JSON.stringify(messageBlock);
         picsEncrypt = btoa(picsJson);
-        function MasterGOTO(uri){
+        function MasterGOTO(uri) {
             var messageBlock = {
                 event: "goto",
                 data: uri
