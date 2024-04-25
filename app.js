@@ -39,7 +39,7 @@ async function skip(){
     elem('bgVid').style.display = "none";
     elem('skipbt').style.display = "none";
     elem("hBG").style.opacity = 1;
-    document.body.style.overflow = "scroll"
+    document.body.style.overflowY = "scroll"
 
 }
 

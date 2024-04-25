@@ -7,7 +7,8 @@ body {
     padding: 0px;
     color: white;
     font-weight: 700;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden  ;
 
 }
 
@@ -472,15 +473,19 @@ body {
   
   #gayYY{
     height:480vh;width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
   }
 
   #gallerya > img {
-    transition: 200ms;
+    transition: 500ms;
   }
   
   #gallerya > img:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    scale: 1.1;
   }
 .btn:hover {
     background: rgb(255, 0, 0);
