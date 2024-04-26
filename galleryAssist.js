@@ -66,6 +66,7 @@ else {
             trackBeacon(id);
         }
         }else{
+            if(links[0].link ==   "NO_REGISTRATION"){
             document.getElementById('gallerya').innerHTML += `<div style="grid-column: 1/4;display:grid;    grid-template-columns: repeat(3, 1fr);grd-template-rows:1fr;gap:0px;transition:500ms" id="${globalID}" >
             <img id="${globalID}+${0}" src="` + pics[0] + `" style="height:auto;width:100%;transition: 500ms;" onclick="NoRegistration()" from="left"
             onMouseEnter ='elem("${globalID}").style.transform = "scale(1.1)"'
@@ -80,6 +81,22 @@ else {
             onMouseLeave='elem("${globalID}").style.transform = "scale(1)"';'
             >
             </div>`;
+            }else{
+                document.getElementById('gallerya').innerHTML += `<div style="grid-column: 1/4;display:grid;    grid-template-columns: repeat(3, 1fr);grd-template-rows:1fr;gap:0px;transition:500ms" id="${globalID}" >
+                <img id="${globalID}+${0}" src="` + pics[0] + `" style="height:auto;width:100%;transition: 500ms;" onclick="MasterGOTO('${links[0].link}')" from="left"
+                onMouseEnter ='elem("${globalID}").style.transform = "scale(1.1)"'
+                onMouseLeave='elem("${globalID}").style.transform = "scale(1)"';'
+                >
+                <img id="${globalID}+${1}" src="` + pics[1] + `" style="height:auto;width:100%;transition: 500ms;" onclick="MasterGOTO('${links[0].link}')" from="bottom"
+                onMouseEnter ='elem("${globalID}").style.transform = "scale(1.1)"'
+                onMouseLeave='elem("${globalID}").style.transform = "scale(1)"';'
+                >
+                <img id="${globalID}+${2}" src="` + pics[2] + `" style="height:auto;width:100%;transition: 500ms;" onclick="MasterGOTO('${links[0].link}" from="right"
+                onMouseEnter ='elem("${globalID}").style.transform = "scale(1.1)"'
+                onMouseLeave='elem("${globalID}").style.transform = "scale(1)"';'
+                >
+                </div>`;
+            }
             trackBeacon(`${globalID}+${0}`);
             trackBeacon(`${globalID}+${1}`);
             trackBeacon(`${globalID}+${2}`);

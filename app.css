@@ -255,6 +255,59 @@ body {
     transition: 400ms;
 }
 
+#menu{
+    color: rgba(255, 255, 255, 0.386);
+    position: absolute;
+    left: 0px;
+    z-index: 30;
+    top: 0px;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    transition: 400ms; 
+}
+#menu:hover{
+    color: #ff0000;
+}
+
+#menuWindow{
+    position: absolute;
+    width: 0vw;
+    height: 100vh;
+    z-index: 90;
+    background-color: #000000;
+    color: rgb(92, 92, 92);
+    overflow: hidden;
+    transition: 400ms;
+}
+
+#menuWindow>h4{
+    margin:4px;
+}
+#menuWindow>#menue{
+    color: rgba(255, 255, 255, 0.386);
+    position: absolute;
+    right: 0px;
+    z-index: 30;
+    top: 0px;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    transition: 400ms; 
+}
+#menuWindow>#menue:hover{
+    color: #ff0000;
+}
+
+#menuWindow>h3:hover{
+    color: white;
+    cursor: default;
+}
+#menuWindow>h4:hover{
+    color: white;
+    cursor: pointer;
+}
+
 #skipbt {
     color: rgba(255, 255, 255, 0.386);
     position: absolute;

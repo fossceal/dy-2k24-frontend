@@ -25,6 +25,24 @@ window.onmessage = function (e) {
 }
 
 
+var MEN = false;
+
+async function MENU(){
+    if(MEN){
+        elem("menuWindow").style.width = "0vw";
+        MEN = false;
+        document.body.style.overflowY = "scroll"
+
+    }else{
+        document.body.style.overflowY = "hidden"
+        elem("menuWindow").style.width = "100vw";
+
+        MEN = true;
+
+    }
+}
+
+
 async function skip(){
     elem('bgVid').style.opacity = 0;
     elem('title').style.display = "flex";
@@ -40,6 +58,9 @@ async function skip(){
     elem('skipbt').style.display = "none";
     elem("hBG").style.opacity = 1;
     document.body.style.overflowY = "scroll"
+    elem("menu").style.display  = "block";
+    await sleep(100);
+    elem("menu").style.opacity = 1;
 
 }
 
@@ -99,7 +120,9 @@ async function bis(){
             await sleep(200);
             elem("Boogie").style.display="none";
             document.body.style.overflow = "scroll"
-            
+            elem("menu").style.display  = "block";
+            await sleep(100);
+            elem("menu").style.opacity = 1;
 }
 
 async function jizz(){
