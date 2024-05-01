@@ -23,6 +23,10 @@ window.onmessage = function (e) {
     }
 
 }
+function proShow(){
+    location.href='https://forms.gle/qf1zR2VFD1ff5dqy6'
+}
+
 
 
 var MEN = false;
