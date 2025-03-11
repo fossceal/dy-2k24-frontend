@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/2.0.0/intersection-observer.min.js"></script>
     <style>
       @font-face {
         font-family: "Minercraftory";
@@ -23,6 +24,12 @@
         --gradient-1: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
         --gradient-2: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59);
         --gradient-3: linear-gradient(135deg, #4158d0, #c850c0, #ffcc70);
+        --gradient-4: linear-gradient(135deg, #00c6ff, #0072ff);
+        --gradient-5: linear-gradient(135deg, #f5515f, #a1051d);
+        --gradient-6: linear-gradient(135deg, #fad961, #f76b1c);
+        --gradient-7: linear-gradient(135deg, #1e9600, #fff200, #ff0000);
+        --gradient-8: linear-gradient(135deg, #6a11cb, #2575fc);
+        --gradient-9: linear-gradient(135deg, #ff3cac, #784ba0, #2b86c5);
         --text-primary: #ffffff;
         --text-secondary: #aaaaaa;
         --bg-dark: #0a0a0a;
@@ -71,7 +78,7 @@
         align-items: center;
         opacity: 0;
         animation: navReveal 1s forwards;
-        animation-delay: 4s;
+        animation-delay: 1s;
       }
 
       .nav-link {
@@ -92,128 +99,20 @@
         transform: translateY(-2px);
       }
 
-      /* Hero section enhancements */
-      .hero-section {
-        height: 100vh;
-        position: relative;
-        display: grid;
-        gap: 10px;
-        padding: 20px;
-      }
-
-      .hero-grid-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 16px;
-        opacity: 0;
-        transform: translateY(50px) scale(1);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero-grid-item:nth-child(1) {
-        animation: gridRevealEnhanced 1.5s var(--transition-slow) forwards;
-        animation-delay: 0.2s;
-        background: var(--gradient-1);
-      }
-
-      .hero-grid-item:nth-child(2) {
-        animation: gridRevealEnhanced 1.5s var(--transition-slow) forwards;
-        animation-delay: 0.6s;
-        background: var(--gradient-2);
-      }
-
-      .hero-grid-item:nth-child(3) {
-        animation: gridRevealEnhanced 1.5s var(--transition-slow) forwards;
-        animation-delay: 1s;
-        background: var(--gradient-3);
-      }
-
-      .hero-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s var(--transition-medium);
-        filter: brightness(0.8);
-      }
-
-      .hero-grid-item:hover .hero-image {
-        transform: scale(1);
-        filter: brightness(1);
-      }
-
-      .grid-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 30px;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0) 60%
-        );
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        opacity: 0;
-        transition: all 0.5s var(--transition-medium);
-      }
-
-      .hero-grid-item:hover .grid-overlay {
-        opacity: 1;
-      }
-
-      .grid-title {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        font-weight: 700;
-        transform: translateY(20px);
-        opacity: 0;
-        transition: all 0.5s var(--transition-medium);
-        transition-delay: 0.1s;
-      }
-
-      .grid-subtitle {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        transform: translateY(20px);
-        opacity: 0;
-        transition: all 0.5s var(--transition-medium);
-        transition-delay: 0.2s;
-      }
-
-      .hero-grid-item:hover .grid-title,
-      .hero-grid-item:hover .grid-subtitle {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .grid-icon {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 2rem;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.5s var(--transition-medium);
-        transition-delay: 0.3s;
-      }
-
-      .hero-grid-item:hover .grid-icon {
-        opacity: 0.8;
-        transform: translateY(0);
-      }
-
       /* Content wrapper enhancements */
       .content-wrapper {
         position: relative;
         padding: 40px 20px 60px;
         text-align: center;
         opacity: 0;
-        animation: contentRevealEnhanced 0.5s ease-out forwards;
-        animation-delay: 2s;
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        transform: translateY(30px);
         overflow: hidden;
+      }
+
+      .content-wrapper.in-view {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .content-wrapper::before {
@@ -244,9 +143,13 @@
         -webkit-text-fill-color: transparent;
         opacity: 0;
         transform: translateY(30px);
-        animation: titleRevealEnhanced 0.7s ease-out forwards;
-        animation-delay: 2.5s;
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .title.in-view {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .subtitle {
@@ -254,10 +157,64 @@
         color: var(--text-secondary);
         margin-bottom: 4rem;
         opacity: 0;
-        animation: fadeInEnhanced 1s ease-out forwards;
-        animation-delay: 3s;
+        transition: opacity 1s ease-out;
         font-weight: 300;
         letter-spacing: 2px;
+      }
+
+      .subtitle.in-view {
+        opacity: 1;
+      }
+
+      /* Countdown Section */
+      .countdown-section {
+        margin-bottom: 4rem;
+      }
+
+      .countdown-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        font-family: "Minercraftory", sans-serif;
+      }
+
+      .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .countdown-item {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        background: var(--bg-card);
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .countdown-item span {
+        font-size: 1rem;
+        font-weight: 400;
+        display: block;
+        color: var(--text-secondary);
+      }
+
+      .event-desc {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .event-theme {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-top: 1rem;
+        font-family: "Minercraftory", sans-serif;
       }
 
       /* Contact section enhancements */
@@ -271,14 +228,16 @@
         font-size: 1.8rem;
         margin-bottom: 2rem;
         opacity: 0;
-        animation: fadeInEnhanced 1s ease-out forwards;
-        animation-delay: 3.1s;
+        transition: opacity 1s ease-out;
         display: inline-block;
-        /* background: var(--gradient-2); */
         background: white;
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      .section-title.in-view {
+        opacity: 1;
       }
 
       .contact-grid {
@@ -297,22 +256,18 @@
         transition: all var(--transition-fast);
         opacity: 0;
         transform: translateY(20px);
-        animation: itemRevealEnhanced 0.8s ease-out forwards;
         display: flex;
         flex-direction: column;
         gap: 10px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out,
+          background 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .contact-item:nth-child(1) {
-        animation-delay: 3.2s;
-      }
-      .contact-item:nth-child(2) {
-        animation-delay: 3.4s;
-      }
-      .contact-item:nth-child(3) {
-        animation-delay: 3.6s;
+      .contact-item.in-view {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .contact-item:hover {
@@ -376,11 +331,16 @@
         font-weight: 500;
         transition: all var(--transition-fast);
         opacity: 0;
-        animation: btnRevealEnhanced 1s ease-out forwards;
         position: relative;
         overflow: hidden;
         z-index: 1;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        transition: opacity 1s ease-out,
+          transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+      }
+
+      .social-btn.in-view {
+        opacity: 1;
       }
 
       .social-btn::before {
@@ -425,17 +385,14 @@
           #e1306c,
           #fd1d1d
         );
-        animation-delay: 3.8s;
       }
 
       .facebook-btn {
         background: #4267b2;
-        animation-delay: 4s;
       }
 
       .youtube-btn {
         background: #ff0000;
-        animation-delay: 4.2s;
       }
 
       .btn-icon {
@@ -446,77 +403,16 @@
         padding: 30px 0;
         text-align: center;
         opacity: 0;
-        animation: fadeInEnhanced 1s ease-out forwards;
-        animation-delay: 4.4s;
+        transition: opacity 1s ease-out;
         color: var(--text-secondary);
         font-size: 0.9rem;
       }
 
-      /* Enhanced animations */
-      @keyframes gridRevealEnhanced {
-        0% {
-          opacity: 0;
-          transform: translateY(50px) scale(0.9);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
+      .footer.in-view {
+        opacity: 1;
       }
 
-      @keyframes contentRevealEnhanced {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes titleRevealEnhanced {
-        0% {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes itemRevealEnhanced {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes btnRevealEnhanced {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInEnhanced {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
+      /* Scroll animations */
       @keyframes navReveal {
         0% {
           opacity: 0;
@@ -557,27 +453,8 @@
 
       /* Mobile responsiveness enhancements */
       @media (max-width: 992px) {
-        .hero-section {
-          grid-template-columns: 1fr;
-          height: auto;
-          gap: 15px;
-          padding: 15px;
-        }
-
-        .hero-grid-item {
-          height: 100%;
-        }
         .contact-grid {
           grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-title {
-          font-size: 1rem;
-          margin-bottom: 0px;
-        }
-
-        .grid-subtitle {
-          font-size: 0.8rem;
         }
 
         .social-grid {
@@ -591,19 +468,8 @@
       }
 
       @media (max-width: 768px) {
-        .hero-section {
-          grid-template-columns: 1fr;
-          height: auto;
-          gap: 15px;
-          padding: 15px;
-        }
-
         .nav-menu {
           display: none;
-        }
-
-        .hero-grid-item {
-          height: 100%;
         }
 
         .title {
@@ -630,6 +496,17 @@
           font-size: 0.8rem;
         }
       }
+
+      @media (max-width: 600px) {
+        .countdown-timer {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .countdown-item {
+          font-size: 1.5rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -641,21 +518,40 @@
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
-    <!-- Hero grid section -->
-    <section class="hero-section">
-      <div class="hero-grid-item">
-        <img src="reveal.png" alt="Daksha Yanthra 25" class="hero-image" />
-        <div class="grid-overlay">
-          <!-- <i class="fas fa-lightbulb grid-icon"></i> -->
-          <h3 class="grid-title">Stay Tuned</h3>
-          <p class="grid-subtitle">10.03.2025</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Main content -->
     <div class="content-wrapper">
       <h1 class="title">Daksha Yanthra '25</h1>
+
+      <!-- Countdown Section -->
+      <section class="countdown-section">
+        <div class="countdown-timer" id="countdown-timer">
+          <div class="countdown-item">
+            <span id="days">00</span>
+            <span>Days</span>
+          </div>
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <span>Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <span>Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds">00</span>
+            <span>Seconds</span>
+          </div>
+        </div>
+        <div class="event-desc">
+          <strong style="color: white">Daksha Yanthra 2025</strong> - Presented
+          by the College of Engineering Attingal, this Techno-Cultural Fest
+          invites you to a realm where imagination, innovation, and
+          collaboration meet to build something remarkable. From innovative tech
+          challenges to vibrant cultural showcases, each event is a block in the
+          foundation of excellence. Join us as we craft, connect, and shape the
+          future—one block at a time!
+        </div>
+      </section>
 
       <!-- Contact section -->
       <section id="contact" class="contact-section">
@@ -663,7 +559,6 @@
         <div class="contact-grid">
           <div class="contact-item">
             <div class="contact-name">Roshan Syed</div>
-            <!-- <div class="contact-role">Event Coordinator</div> -->
             <a
               href="https://wa.me/919995898789"
               class="whatsapp-link"
@@ -674,7 +569,6 @@
           </div>
           <div class="contact-item">
             <div class="contact-name">Jithu N Biju</div>
-            <!-- <div class="contact-role">Technical Lead</div> -->
             <a
               href="https://wa.me/919400469980"
               class="whatsapp-link"
@@ -685,7 +579,6 @@
           </div>
           <div class="contact-item">
             <div class="contact-name">Sourav S</div>
-            <!-- <div class="contact-role">Operations Manager</div> -->
             <a
               href="https://wa.me/917012140973"
               class="whatsapp-link"
@@ -707,12 +600,6 @@
           >
             <i class="fab fa-instagram btn-icon"></i> Follow on Instagram
           </a>
-          <!-- <a href="#" target="_blank" class="social-btn facebook-btn">
-                    <i class="fab fa-facebook-f btn-icon"></i> Like on Facebook
-                </a>
-                <a href="#" target="_blank" class="social-btn youtube-btn">
-                    <i class="fab fa-youtube btn-icon"></i> Subscribe on YouTube
-                </a> -->
         </div>
       </section>
 
@@ -724,7 +611,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Preload image
+        // Preload images
         const img = new Image();
         img.src = "reveal.png";
         img.onload = () => {
@@ -812,6 +699,49 @@
           init();
         });
 
+        // Intersection Observer for scroll-triggered animations
+        const observerOptions = {
+          root: null, // viewport
+          rootMargin: "0px",
+          threshold: 0.1, // trigger when 10% of the element is visible
+        };
+
+        // Function to handle intersection
+        const handleIntersection = (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              // If it's a grid item, add sequential animation for better visual effect
+              if (entry.target.classList.contains("hero-grid-item")) {
+                const index = Array.from(
+                  entry.target.parentNode.children
+                ).indexOf(entry.target);
+                entry.target.style.transitionDelay = `${0.1 * index}s`;
+              }
+            }
+          });
+        };
+
+        // Create observer
+        const observer = new IntersectionObserver(
+          handleIntersection,
+          observerOptions
+        );
+
+        // Observe all grid items
+        document.querySelectorAll(".hero-grid-item").forEach((item) => {
+          observer.observe(item);
+        });
+
+        // Observe other elements that need scroll-triggered animation
+        document
+          .querySelectorAll(
+            ".content-wrapper, .title, .subtitle, .section-title, .contact-item, .social-btn, .footer"
+          )
+          .forEach((item) => {
+            observer.observe(item);
+          });
+
         init();
         animate();
 
@@ -825,6 +755,42 @@
             });
           });
         });
+
+        // Countdown Timer
+        const countdownDate = new Date("2025-03-24T09:00:00").getTime(); // Set your event date here
+
+        const countdownTimer = setInterval(() => {
+          const now = new Date().getTime();
+          const distance = countdownDate - now;
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("days").innerText = days
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").innerText = hours
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").innerText = minutes
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("seconds").innerText = seconds
+            .toString()
+            .padStart(2, "0");
+
+          if (distance < 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("countdown-timer").innerHTML =
+              "Event has started!";
+          }
+        }, 1000);
       });
     </script>
   </body>
