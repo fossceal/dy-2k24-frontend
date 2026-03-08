@@ -1,5 +1,5 @@
 // SuperGallery JS V1.0 is copyrighted to Havis V H under the brand HVH
-// But Have fun Using it!! :D
+// But Have fun Using it!! :D Yea
 const styles = [
     'color: white',
 
