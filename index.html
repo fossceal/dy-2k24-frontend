@@ -1,797 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daksha Yanthra 25</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/2.0.0/intersection-observer.min.js"></script>
-    <style>
-      @font-face {
-        font-family: "Minercraftory";
-        src: url("Minercraftory.ttf") format("truetype");
-      }
-      :root {
-        --primary-color: #25d366;
-        --accent-color: #833ab4;
-        --gradient-1: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-        --gradient-2: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59);
-        --gradient-3: linear-gradient(135deg, #4158d0, #c850c0, #ffcc70);
-        --gradient-4: linear-gradient(135deg, #00c6ff, #0072ff);
-        --gradient-5: linear-gradient(135deg, #f5515f, #a1051d);
-        --gradient-6: linear-gradient(135deg, #fad961, #f76b1c);
-        --gradient-7: linear-gradient(135deg, #1e9600, #fff200, #ff0000);
-        --gradient-8: linear-gradient(135deg, #6a11cb, #2575fc);
-        --gradient-9: linear-gradient(135deg, #ff3cac, #784ba0, #2b86c5);
-        --text-primary: #ffffff;
-        --text-secondary: #aaaaaa;
-        --bg-dark: #0a0a0a;
-        --bg-card: rgba(255, 255, 255, 0.05);
-        --bg-card-hover: rgba(255, 255, 255, 0.1);
-        --transition-fast: 0.3s ease;
-        --transition-medium: 0.5s ease;
-        --transition-slow: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
-      body {
-        background: var(--bg-dark);
-        color: var(--text-primary);
-        min-height: 100vh;
-        overflow-x: hidden;
-        position: relative;
-      }
-
-      /* Background particles */
-      .particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0.3;
-        pointer-events: none;
-      }
-
-      /* Nav menu */
-      .nav-menu {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 100;
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        opacity: 0;
-        animation: navReveal 1s forwards;
-        animation-delay: 1s;
-      }
-
-      .nav-link {
-        color: var(--text-primary);
-        text-decoration: none;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-weight: 500;
-        font-size: 0.9rem;
-        transition: all var(--transition-fast);
-        background: var(--bg-card);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-
-      .nav-link:hover {
-        background: var(--bg-card-hover);
-        transform: translateY(-2px);
-      }
-
-      /* Content wrapper enhancements */
-      .content-wrapper {
-        position: relative;
-        padding: 40px 20px 60px;
-        text-align: center;
-        opacity: 0;
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        transform: translateY(30px);
-        overflow: hidden;
-      }
-
-      .content-wrapper.in-view {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .content-wrapper::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        height: 1px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--text-secondary),
-          transparent
-        );
-      }
-
-      .title {
-        font-family: "Minercraftory";
-        font-size: 5rem;
-        letter-spacing: 6px;
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-        background: var(--gradient-1);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      }
-
-      .title.in-view {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .subtitle {
-        font-size: 2.5rem;
-        color: var(--text-secondary);
-        margin-bottom: 4rem;
-        opacity: 0;
-        transition: opacity 1s ease-out;
-        font-weight: 300;
-        letter-spacing: 2px;
-      }
-
-      .subtitle.in-view {
-        opacity: 1;
-      }
-
-      /* Countdown Section */
-      .countdown-section {
-        margin-bottom: 4rem;
-      }
-
-      .countdown-title {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--text-primary);
-        font-family: "Minercraftory", sans-serif;
-      }
-
-      .countdown-timer {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
-
-      .countdown-item {
-        font-size: 2rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        background: var(--bg-card);
-        padding: 1rem;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      }
-
-      .countdown-item span {
-        font-size: 1rem;
-        font-weight: 400;
-        display: block;
-        color: var(--text-secondary);
-      }
-
-      .event-desc {
-        font-size: 1.2rem;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-
-      .event-theme {
-        font-size: 1.5rem;
-        color: var(--text-primary);
-        margin-top: 1rem;
-        font-family: "Minercraftory", sans-serif;
-      }
-
-      /* Contact section enhancements */
-      .contact-section {
-        max-width: 800px;
-        margin: 0 auto 4rem;
-        position: relative;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-        opacity: 0;
-        transition: opacity 1s ease-out;
-        display: inline-block;
-        background: white;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .section-title.in-view {
-        opacity: 1;
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
-
-      .contact-item {
-        font-size: 1.1rem;
-        padding: 25px 20px;
-        background: var(--bg-card);
-        border-radius: 16px;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        transition: all var(--transition-fast);
-        opacity: 0;
-        transform: translateY(20px);
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out,
-          background 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .contact-item.in-view {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .contact-item:hover {
-        transform: translateY(-5px);
-        background: var(--bg-card-hover);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-      }
-
-      .contact-name {
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .contact-role {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        margin-bottom: 10px;
-      }
-
-      .whatsapp-link {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: color var(--transition-fast);
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        font-weight: 500;
-        padding: 8px 15px;
-        margin: 0px auto;
-        background: rgba(37, 211, 102, 0.1);
-        border-radius: 8px;
-        align-self: flex-start;
-      }
-
-      .whatsapp-link:hover {
-        color: #1da851;
-        background: rgba(37, 211, 102, 0.2);
-      }
-
-      /* Social media & footer enhancements */
-      .social-section {
-        margin-bottom: 4rem;
-      }
-
-      .social-grid {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 2rem;
-      }
-
-      .social-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 15px 35px;
-        border-radius: 50px;
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all var(--transition-fast);
-        opacity: 0;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        transition: opacity 1s ease-out,
-          transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
-      }
-
-      .social-btn.in-view {
-        opacity: 1;
-      }
-
-      .social-btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        z-index: -1;
-        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-
-      .social-btn::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        opacity: 0.7;
-        z-index: -2;
-        filter: blur(15px);
-      }
-
-      .social-btn:hover {
-        transform: translateY(-5px);
-      }
-
-      .social-btn:hover::before {
-        transform: scale(1.1) rotate(-2deg);
-      }
-
-      .instagram-btn {
-        background: linear-gradient(
-          45deg,
-          #405de6,
-          #833ab4,
-          #c13584,
-          #e1306c,
-          #fd1d1d
-        );
-      }
-
-      .facebook-btn {
-        background: #4267b2;
-      }
-
-      .youtube-btn {
-        background: #ff0000;
-      }
-
-      .btn-icon {
-        font-size: 1.2rem;
-      }
-
-      .footer {
-        padding: 30px 0;
-        text-align: center;
-        opacity: 0;
-        transition: opacity 1s ease-out;
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-      }
-
-      .footer.in-view {
-        opacity: 1;
-      }
-
-      /* Scroll animations */
-      @keyframes navReveal {
-        0% {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes float {
-        0% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-15px);
-        }
-        100% {
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1.05);
-          opacity: 0.8;
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      /* Mobile responsiveness enhancements */
-      @media (max-width: 992px) {
-        .contact-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .social-grid {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .title {
-          font-size: 4rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .nav-menu {
-          display: none;
-        }
-
-        .title {
-          font-size: 2.5rem;
-          letter-spacing: 3px;
-        }
-
-        .subtitle {
-          font-size: 1.8rem;
-          margin-bottom: 3rem;
-        }
-
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .nav-menu {
-          top: 10px;
-          right: 10px;
-        }
-
-        .nav-link {
-          padding: 6px 12px;
-          font-size: 0.8rem;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .countdown-timer {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .countdown-item {
-          font-size: 1.5rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Background particles -->
-    <canvas class="particles" id="particles"></canvas>
-
-    <!-- Navigation menu -->
-    <nav class="nav-menu">
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-
-    <!-- Main content -->
-    <div class="content-wrapper">
-      <h1 class="title">Daksha Yanthra '25</h1>
-
-      <!-- Countdown Section -->
-      <section class="countdown-section">
-        <div class="countdown-timer" id="countdown-timer">
-          <div class="countdown-item">
-            <span id="days">00</span>
-            <span>Days</span>
-          </div>
-          <div class="countdown-item">
-            <span id="hours">00</span>
-            <span>Hours</span>
-          </div>
-          <div class="countdown-item">
-            <span id="minutes">00</span>
-            <span>Minutes</span>
-          </div>
-          <div class="countdown-item">
-            <span id="seconds">00</span>
-            <span>Seconds</span>
-          </div>
-        </div>
-        <div class="event-desc">
-          <strong style="color: white">Daksha Yanthra 2025</strong> - Presented
-          by the College of Engineering Attingal, this Techno-Cultural Fest
-          invites you to a realm where imagination, innovation, and
-          collaboration meet to build something remarkable. From innovative tech
-          challenges to vibrant cultural showcases, each event is a block in the
-          foundation of excellence. Join us as we craft, connect, and shape the
-          future—one block at a time!
-        </div>
-      </section>
-
-      <!-- Contact section -->
-      <section id="contact" class="contact-section">
-        <h3 class="section-title">Contact Us</h3>
-        <div class="contact-grid">
-          <div class="contact-item">
-            <div class="contact-name">Roshan Syed</div>
-            <a
-              href="https://wa.me/919995898789"
-              class="whatsapp-link"
-              target="_blank"
-            >
-              <i class="fab fa-whatsapp"></i> Connect
-            </a>
-          </div>
-          <div class="contact-item">
-            <div class="contact-name">Jithu N Biju</div>
-            <a
-              href="https://wa.me/919400469980"
-              class="whatsapp-link"
-              target="_blank"
-            >
-              <i class="fab fa-whatsapp"></i> Connect
-            </a>
-          </div>
-          <div class="contact-item">
-            <div class="contact-name">Sourav S</div>
-            <a
-              href="https://wa.me/917012140973"
-              class="whatsapp-link"
-              target="_blank"
-            >
-              <i class="fab fa-whatsapp"></i> Connect
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Social media section -->
-      <section class="social-section">
-        <div class="social-grid">
-          <a
-            href="https://www.instagram.com/dakshayanthra/"
-            target="_blank"
-            class="social-btn instagram-btn"
-          >
-            <i class="fab fa-instagram btn-icon"></i> Follow on Instagram
-          </a>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="footer">
-        <p>&copy; 2025 Daksha Yanthra | CEAL. All rights reserved.</p>
-      </footer>
-    </div>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DakshyaYanthra - Redirecting...</title>
+    <meta name="description"
+        content="We have moved! You are being redirected to our new domain at dakshayanthra.ceal.in.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dakshayanthra.in/">
+    <meta property="og:title" content="DakshyaYanthra - We've Moved">
+    <meta property="og:description"
+        content="We have moved to a new domain. You are being redirected to dakshayanthra.ceal.in.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dakshayanthra.in/">
+    <meta property="twitter:title" content="DakshyaYanthra - We've Moved">
+    <meta property="twitter:description"
+        content="We have moved to a new domain. You are being redirected to dakshayanthra.ceal.in.">
+
+    <!-- Redirect to the new domain -->
+    <meta http-equiv="refresh" content="5; url=https://dakshayanthra.ceal.in/" />
+
+    <!-- Fallback JavaScript redirect -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Preload images
-        const img = new Image();
-        img.src = "reveal.png";
-        img.onload = () => {
-          document.body.classList.add("loaded");
-        };
-
-        // Background particles animation
-        const canvas = document.getElementById("particles");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        // Particle settings
-        const particlesArray = [];
-        const numberOfParticles = 100;
-
-        class Particle {
-          constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = Math.random() * 1 - 0.5;
-            this.speedY = Math.random() * 1 - 0.5;
-            this.color = `rgba(255, 255, 255, ${Math.random() * 0.5})`;
-          }
-
-          update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if (this.x > canvas.width || this.x < 0) {
-              this.speedX = -this.speedX;
-            }
-
-            if (this.y > canvas.height || this.y < 0) {
-              this.speedY = -this.speedY;
-            }
-          }
-
-          draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-
-        function init() {
-          for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
-          }
-        }
-
-        function animate() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-            particlesArray[i].draw();
-
-            // Connect particles with lines
-            for (let j = i + 1; j < particlesArray.length; j++) {
-              const dx = particlesArray[i].x - particlesArray[j].x;
-              const dy = particlesArray[i].y - particlesArray[j].y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-
-              if (distance < 100) {
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(255, 255, 255, ${
-                  0.1 - distance / 1000
-                })`;
-                ctx.lineWidth = 0.2;
-                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-                ctx.stroke();
-              }
-            }
-          }
-          requestAnimationFrame(animate);
-        }
-
-        // Handle window resize
-        window.addEventListener("resize", () => {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-          init();
-        });
-
-        // Intersection Observer for scroll-triggered animations
-        const observerOptions = {
-          root: null, // viewport
-          rootMargin: "0px",
-          threshold: 0.1, // trigger when 10% of the element is visible
-        };
-
-        // Function to handle intersection
-        const handleIntersection = (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-              // If it's a grid item, add sequential animation for better visual effect
-              if (entry.target.classList.contains("hero-grid-item")) {
-                const index = Array.from(
-                  entry.target.parentNode.children
-                ).indexOf(entry.target);
-                entry.target.style.transitionDelay = `${0.1 * index}s`;
-              }
-            }
-          });
-        };
-
-        // Create observer
-        const observer = new IntersectionObserver(
-          handleIntersection,
-          observerOptions
-        );
-
-        // Observe all grid items
-        document.querySelectorAll(".hero-grid-item").forEach((item) => {
-          observer.observe(item);
-        });
-
-        // Observe other elements that need scroll-triggered animation
-        document
-          .querySelectorAll(
-            ".content-wrapper, .title, .subtitle, .section-title, .contact-item, .social-btn, .footer"
-          )
-          .forEach((item) => {
-            observer.observe(item);
-          });
-
-        init();
-        animate();
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-              behavior: "smooth",
-            });
-          });
-        });
-
-        // Countdown Timer
-        const countdownDate = new Date("2025-03-24T09:00:00").getTime(); // Set your event date here
-
-        const countdownTimer = setInterval(() => {
-          const now = new Date().getTime();
-          const distance = countdownDate - now;
-
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          const minutes = Math.floor(
-            (distance % (1000 * 60 * 60)) / (1000 * 60)
-          );
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          document.getElementById("days").innerText = days
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("hours").innerText = hours
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("minutes").innerText = minutes
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("seconds").innerText = seconds
-            .toString()
-            .padStart(2, "0");
-
-          if (distance < 0) {
-            clearInterval(countdownTimer);
-            document.getElementById("countdown-timer").innerHTML =
-              "Event has started!";
-          }
-        }, 1000);
-      });
+        setTimeout(function () {
+            window.location.href = "https://dakshayanthra.ceal.in/";
+        }, 5000);
     </script>
-  </body>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            color: #111827;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        a {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #1d4ed8;
+        }
+
+        .loader {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="loader"></div>
+        <h1>We've moved!</h1>
+        <p id="countdown-text">You will be redirected to the new domain for DakshyaYanthra in <span id="time">5</span>
+            seconds.</p>
+        <script>
+            let timeLeft = 5;
+            const timeSpan = document.getElementById('time');
+            setInterval(() => {
+                timeLeft--;
+                if (timeLeft > 0) timeSpan.textContent = timeLeft;
+            }, 1000);
+        </script>
+        <a href="https://dakshayanthra.ceal.in/">Click here if not redirected</a>
+    </div>
+</body>
+
 </html>
